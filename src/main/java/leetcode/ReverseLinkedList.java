@@ -19,18 +19,14 @@ public class ReverseLinkedList {
      * 遍历, 不使用额外空间
      */
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
+        ListNode prev = null, cur = head, next;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
         }
-        ListNode hN = head.next, hP = null;
-        while (hN != null) {
-            head.next = hP;
-            hP = head;
-            head = hN;
-            hN = hN.next;
-        }
-        head.next = hP;
-        return head;
+        return prev;
     }
 
     /**
