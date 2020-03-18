@@ -1,5 +1,7 @@
 package leetcode;
 
+import leetcode.structure.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ExecutionException;

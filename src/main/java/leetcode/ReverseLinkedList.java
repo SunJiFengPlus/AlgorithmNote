@@ -1,5 +1,7 @@
 package leetcode;
 
+import leetcode.structure.ListNode;
+
 /**
  * 反转一个单链表。
  * <p>

@@ -1,5 +1,8 @@
 package examination.bigo.autumn;
 
+
+import leetcode.structure.TreeNode;
+
 /**
  * @author 孙继峰
  * @date 2019/08/27
@@ -31,15 +34,6 @@ public class Main {
             s2.append(root.val);
         }
         inTraverse(root.right, flag);
-    }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) {
-            val = x;
-        }
     }
 
     public static double distance(double h, int n) {
