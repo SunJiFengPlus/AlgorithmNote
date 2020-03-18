@@ -33,6 +33,7 @@ public class LinkedListCycle {
             }
             return false;
         });
+        task.run();
 
         try {
             return task.get(500, TimeUnit.MILLISECONDS);
