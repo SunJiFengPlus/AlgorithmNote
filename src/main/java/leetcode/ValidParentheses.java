@@ -1,5 +1,9 @@
 package leetcode;
 
+import com.google.common.collect.ImmutableMap;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -65,5 +69,31 @@ public class ValidParentheses {
             default:
                 return false;
         }
+    }
+
+    public boolean isValid2(String s) {
+        Map<Character, Character> map = ImmutableMap.of(')', '(', ']', '[', '}', '{');
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (!map.containsKey(c)) {
+                stack.push(c);
+            } else if (!stack.isEmpty() && !map.get(c).equals(stack.pop())) {
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    public boolean isValid3(String s) {
+        Map<Character, Character> map = ImmutableMap.of(')', '(', ']', '[', '}', '{');
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (map.containsKey(c) && !stack.isEmpty() && !stack.pop().equals(map.get(c))) {
+                return false;
+            } else {
+                stack.push(c);
+            }
+        }
+        return stack.isEmpty();
     }
 }

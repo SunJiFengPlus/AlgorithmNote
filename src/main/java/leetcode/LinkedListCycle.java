@@ -31,15 +31,14 @@ public class LinkedListCycle {
             while (h != null) {
                 h = h.next;
             }
-            return true;
+            return false;
         });
 
         try {
-            task.get(500, TimeUnit.MILLISECONDS);
+            return task.get(500, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             return true;
         }
-        return false;
     }
 
     /**
@@ -60,18 +59,14 @@ public class LinkedListCycle {
      * 快慢指针
      */
     public boolean hasCycle3(ListNode head) {
-        if (head == null || head.next == null) {
-            return false;
-        }
-        ListNode fastNode = head.next;
-        while (fastNode != head) {
-            if (fastNode != null && fastNode.next != null) {
-                head = head.next;
-                fastNode = fastNode.next.next;
-            } else {
-                return false;
+        ListNode slow = head, fast = head.next;
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }
