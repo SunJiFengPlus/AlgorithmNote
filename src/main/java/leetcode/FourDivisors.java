@@ -3,6 +3,9 @@ package leetcode;
 /**
  * https://leetcode-cn.com/contest/weekly-contest-181/problems/four-divisors/
  *
+ * 一个数的因数总是会成对存在, 例如 9 = 1 * 3 = 3 * 3
+ * 只取得 1 - sqrt(n) 之间的因数即可得到另一半的因数
+ *
  * @author 孙继峰
  * @since 2020/3/22
  */
