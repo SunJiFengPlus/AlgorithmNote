@@ -10,7 +10,7 @@ public class ValidAnagram {
      * 使用 Ascii 码进行哈希
      */
     public boolean isAnagram(String s, String t) {
-        int[] array = new int[26];
+        byte[] array = new byte[26];
         for (char c : s.toCharArray()) {
             array[c - 'a']++;
         }
