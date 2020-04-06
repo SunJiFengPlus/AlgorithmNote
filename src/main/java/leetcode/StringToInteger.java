@@ -1,5 +1,8 @@
 package leetcode;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.junit.Assert;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -12,10 +15,9 @@ import org.junit.jupiter.params.provider.CsvSource;
  */
 public class StringToInteger {
     public int myAtoi(String str) {
-        for (int i = 0; i < str.length(); i++) {
-
-        }
-        return Integer.parseInt(str.trim());
+        Matcher matcher = Pattern.compile("[+-]?\\d+").matcher(str);
+        matcher.find();
+        return Integer.parseInt(matcher.group());
     }
 
     @ParameterizedTest
