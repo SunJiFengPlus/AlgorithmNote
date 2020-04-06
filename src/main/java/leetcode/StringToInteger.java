@@ -15,16 +15,19 @@ import org.junit.jupiter.params.provider.CsvSource;
  */
 public class StringToInteger {
     public int myAtoi(String str) {
-        Matcher matcher = Pattern.compile("[+-]?\\d+").matcher(str);
-        matcher.find();
-        return Integer.parseInt(matcher.group());
+        Matcher matcher = Pattern.compile("^[+-]?\\d+").matcher(str.trim());
+        if (matcher.find()) {
+            return Integer.parseInt(matcher.group());
+        }
+        return 0;
     }
 
     @ParameterizedTest
     @CsvSource({
             "42, 42",
             "'   -42', -42",
-            "4193 with words, 4193"
+            "4193 with words, 4193",
+            "words and 987, 0"
     })
     public void test(String input, int output) {
         Assert.assertEquals(myAtoi(input), output);
