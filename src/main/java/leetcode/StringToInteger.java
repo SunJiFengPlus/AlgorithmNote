@@ -17,7 +17,7 @@ public class StringToInteger {
     public int myAtoi(String str) {
         Matcher matcher = Pattern.compile("^[+-]?\\d+").matcher(str.trim());
         if (matcher.find()) {
-            return Integer.parseInt(matcher.group());
+            return (int) Math.max(Double.parseDouble(matcher.group()), Integer.MIN_VALUE);
         }
         return 0;
     }
@@ -27,7 +27,8 @@ public class StringToInteger {
             "42, 42",
             "'   -42', -42",
             "4193 with words, 4193",
-            "words and 987, 0"
+            "words and 987, 0",
+            "-91283472332, -2147483648"
     })
     public void test(String input, int output) {
         Assert.assertEquals(myAtoi(input), output);
