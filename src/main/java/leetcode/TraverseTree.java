@@ -29,6 +29,16 @@ public class TraverseTree {
     public List<Integer> inorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         ArrayList<Integer> res = new ArrayList<>();
+        while (root != null || !stack.isEmpty()) {
+            if (root == null) {
+                root = stack.pop();
+                res.add(root.val);
+                root = root.right;
+            } else {
+                stack.push(root);
+                root = root.left;
+            }
+        }
         return res;
     }
 }
