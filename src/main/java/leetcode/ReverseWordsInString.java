@@ -1,5 +1,12 @@
 package leetcode;
 
+import java.util.Arrays;
+
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
 /**
  * 示例 1：
  * <p>
@@ -22,10 +29,6 @@ package leetcode;
  * @date 2019/08/24
  */
 public class ReverseWordsInString {
-    public static void main(String[] args) {
-        System.out.println("the sky   is  blue".replaceAll(" {2,}(?=\\w)", " "));
-    }
-
     /**
      * "the sky  is  blue" -> "eulb  si  yks eht" 全部反转
      * "eulb  si  yks eht" -> "blue is sky the  " 局部反转
@@ -66,5 +69,26 @@ public class ReverseWordsInString {
             s[startIndex++] = s[endIndex];
             s[endIndex--] = temp;
         }
+    }
+
+    public String reverseWords2(String s) {
+        String[] array = s.trim().split(" ");
+        int le = 0, ri = array.length - 1;
+        while (le < ri) {
+            String temp = array[le];
+            array[le++] = array[ri];
+            array[ri--] = temp;
+        }
+        StringBuilder builder = new StringBuilder();
+        Arrays.stream(array).forEach(str -> builder.append(str).append(" "));
+        return builder.toString().trim();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "the sky is blue, blue is sky the"
+    })
+    public void test(String input, String output) {
+        Assertions.assertThat(reverseWords2(input)).isEqualTo(output);
     }
 }
