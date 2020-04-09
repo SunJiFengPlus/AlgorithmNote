@@ -86,7 +86,8 @@ public class ReverseWordsInString {
 
     @ParameterizedTest
     @CsvSource({
-            "the sky is blue, blue is sky the"
+            "the sky is blue, blue is sky the",
+            "'  hello world!  ', world! hello"
     })
     public void test(String input, String output) {
         Assertions.assertThat(reverseWords2(input)).isEqualTo(output);
