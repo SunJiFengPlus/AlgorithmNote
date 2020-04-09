@@ -72,7 +72,7 @@ public class ReverseWordsInString {
     }
 
     public String reverseWords2(String s) {
-        String[] array = s.trim().split(" ");
+        String[] array = s.trim().split(" +");
         int le = 0, ri = array.length - 1;
         while (le < ri) {
             String temp = array[le];
@@ -87,7 +87,8 @@ public class ReverseWordsInString {
     @ParameterizedTest
     @CsvSource({
             "the sky is blue, blue is sky the",
-            "'  hello world!  ', world! hello"
+            "'  hello world!  ', world! hello",
+            "a good   example, example good a"
     })
     public void test(String input, String output) {
         Assertions.assertThat(reverseWords2(input)).isEqualTo(output);
