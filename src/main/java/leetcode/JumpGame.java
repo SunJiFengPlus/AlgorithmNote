@@ -14,6 +14,9 @@ public class JumpGame {
         int canJump = 0;
         for (int i = 0; i < nums.length - 1; i++, canJump--) {
             canJump = Math.max(nums[i], canJump);
+            if (canJump == 0) {
+                return false;
+            }
         }
         return canJump >= 0;
     }
@@ -21,5 +24,10 @@ public class JumpGame {
     @Test
     public void test1() {
         Assertions.assertThat(canJump(new int[]{2, 3, 1, 1, 4})).isTrue();
+    }
+
+    @Test
+    public void test2() {
+        Assertions.assertThat(canJump(new int[]{0,2,3})).isFalse();
     }
 }
