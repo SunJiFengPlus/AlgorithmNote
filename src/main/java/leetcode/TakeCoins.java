@@ -18,7 +18,12 @@ public class TakeCoins {
     }
 
     @Test
-    public void test() {
+    public void test1() {
         Assert.assertEquals(minCount(new int[]{4,2,1}), 4);
+    }
+
+    @Test
+    public void test2() {
+        Assert.assertEquals(minCount(new int[]{2,3,10}), 8);
     }
 }
