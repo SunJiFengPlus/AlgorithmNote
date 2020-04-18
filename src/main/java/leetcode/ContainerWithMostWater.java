@@ -1,11 +1,7 @@
 package leetcode;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Convert;
 
 /**
  * https://leetcode-cn.com/problems/container-with-most-water/
@@ -14,6 +10,7 @@ import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Convert
  * @since 2020/4/18
  */
 public class ContainerWithMostWater {
+    // 使用双指针, 每次移动较小的指针, 因为较大的指针盛的水只会越来越少
     public int maxArea(int[] height) {
         int max = 0, temp;
         int le = 0, ri = height.length - 1;
