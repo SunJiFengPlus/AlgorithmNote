@@ -23,7 +23,8 @@ public class ReverseInteger {
 
     @ParameterizedTest
     @CsvSource({
-            "123, 321"
+            "123, 321",
+            "-123, -321"
     })
     public void test(int input, int output) {
         Assert.assertEquals(reverse(input), output);
