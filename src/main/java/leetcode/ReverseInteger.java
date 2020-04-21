@@ -12,20 +12,24 @@ import org.junit.jupiter.params.provider.CsvSource;
  */
 public class ReverseInteger {
     public int reverse(int x) {
-        int res = 0;
+        long res = 0;
         while (x != 0) {
             res *= 10;
             res += x % 10;
             x /= 10;
         }
-        return res;
+        if (res > Integer.MAX_VALUE || res < Integer.MIN_VALUE) {
+            return 0;
+        }
+        return (int)res;
     }
 
     @ParameterizedTest
     @CsvSource({
             "123, 321",
             "-123, -321",
-            "120, 21"
+            "120, 21",
+            "1534236469, 0"
     })
     public void test(int input, int output) {
         Assert.assertEquals(reverse(input), output);
