@@ -13,11 +13,9 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class ReverseInteger {
     public int reverse(int x) {
         long res = 0;
-        while (x != 0) {
-            res *= 10;
-            res += x % 10;
-            x /= 10;
-        }
+        do {
+            res = res * 10 + x % 10;
+        } while ((x /= 10) != 0);
         if (res > Integer.MAX_VALUE || res < Integer.MIN_VALUE) {
             return 0;
         }
