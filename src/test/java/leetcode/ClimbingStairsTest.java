@@ -13,7 +13,9 @@ public class ClimbingStairsTest {
         "3, 3"
     })
     public void test(int input, int output) {
-        int res = new ClimbingStairs().climbStairs(input);
+        int res = new ClimbingStairs().climbStairs1(input);
+        assertThat(res).isEqualTo(output);
+        res = new ClimbingStairs().climbStairs2(input);
         assertThat(res).isEqualTo(output);
     }
 }

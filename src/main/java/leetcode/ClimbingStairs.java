@@ -23,7 +23,7 @@ public class ClimbingStairs {
         return climbStairs1(n - 1) + climbStairs1(n - 2);
     }
 
-    // 加上缓存,这样不会超时
+    // 加上缓存,这样不会超时, 后知后觉, 这个缓存就是DP数组耶
     Map<Integer, Integer> cache = new HashMap<>();
     public int climbStairs2(int n) {
         if (n < 2) {
