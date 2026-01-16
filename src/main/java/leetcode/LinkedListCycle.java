@@ -70,4 +70,28 @@ public class LinkedListCycle {
         }
         return false;
     }
+
+    public boolean hasCycle(ListNode head) {
+        if (head==null) {
+            return false;
+        }
+
+        ListNode dummyHead = new ListNode(-1);
+        dummyHead.next = head;
+        ListNode slow = dummyHead, fast = dummyHead;
+
+        while (fast!=null) {
+            fast = fast.next;
+            if (fast!=null) {
+                fast = fast.next;
+            }
+            slow = slow.next;
+
+            if (fast==slow) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
