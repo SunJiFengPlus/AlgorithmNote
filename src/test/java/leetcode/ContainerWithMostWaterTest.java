@@ -8,7 +8,7 @@ class ContainerWithMostWaterTest {
 
     @Test
     public void test1() {
-        assertThat(new ContainerWithMostWater().maxArea(new int[]{1,8,6,2,5,4,8,3,7}))
+        assertThat(new ContainerWithMostWater().maxArea3(new int[]{1,8,6,2,5,4,8,3,7}))
             .isEqualTo(49);
     }
 
