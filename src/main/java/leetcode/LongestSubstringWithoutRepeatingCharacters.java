@@ -1,7 +1,9 @@
 package leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 // leetcode 3
 public class LongestSubstringWithoutRepeatingCharacters {
@@ -21,5 +23,35 @@ public class LongestSubstringWithoutRepeatingCharacters {
         }
         
         return max;
+    }
+
+    /**
+     * 暴力解法
+     * 拆解出全部的子字符串: abcabcbb 拆为 a, ab, abc, abca, abcab, abcabc....
+     *                                 b, bc, bca, bcab, bcabc, bcabcb....
+     *                                 c, ca, cab, cabc, cabcb, cabcbb....
+     * 把每一个字符都存入集合, 与子字符串后的第一个进行判断
+     * 如果子字符串后第一个字符存在于集合中, 代表遇到的重复的字符, 能确定本轮迭代中最长无重复子串的长度了 
+     * 如果子字符串后第一个字符不存在于集合中, 代表还没遇到重复的字符, 还可以再往后找
+     */
+    public int lengthOfLongestSubstring1(String s) {
+        int maxLength = 0;
+        for (int start = 0; start < s.length(); start++) {
+            Set<Character> knownChar = new HashSet<>();
+            knownChar.add(s.charAt(start));
+            int curMaxLength = 0;
+            for (int end = start+1; end < s.length(); end++) {
+                char endChar = s.charAt(end);
+                if (knownChar.contains(endChar)) {
+                    curMaxLength = Math.max(curMaxLength, end-start);
+                    break;
+                } else {
+                    knownChar.add(endChar);
+                    curMaxLength++;
+                }
+            }
+            maxLength = Math.max(curMaxLength, maxLength);
+        }
+        return maxLength;
     }
 }
