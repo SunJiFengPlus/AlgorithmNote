@@ -8,6 +8,15 @@ import java.util.Set;
 // leetcode 3
 public class LongestSubstringWithoutRepeatingCharacters {
     
+    /**
+     * 双指针思路:
+     * - 左指针指向字符串开始的index
+     * - 右指针指向字符串结束的index
+     * - 左指针右指针之间的子字符串为最长无重复子串
+     * <p> 
+     * 右指针移动的逻辑: 随迭代次数不断自增, 直到到达字符串末尾
+     * 左指针移动的逻辑: 右指针指向的字符存在于左右指针间的子字符串中时, 移动到右指针字符最后一次出现的index+1位置 
+     */
     public int lengthOfLongestSubstring(String s) {
         Map<Character, Integer> map = new HashMap<>();
         int left = 0;
